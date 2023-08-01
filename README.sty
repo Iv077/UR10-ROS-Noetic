@@ -1,0 +1,71 @@
+---------------Robot visuomotor control---------------
+
+Assessment 3 - PDE3433 Advanced Robotics
+Iva Valcheva 
+22/01/2023
+Middlesex University
+
+------------------------------------------------------
+Content:
+
+Code capable to catch an object with certain parameter,
+explained in "Assignment Description”. The code runs,
+alternating parameter, check true the different axis
+the errors with the objective of reaching a Cartesian
+error under 0.05 and an orientational error smaller 
+than 5.
+
+The code runs the robot true commands in ROS Noetic, in 
+combination with python and by sending and receiving 
+messages true nodes.
+
+
+------------------------------------------------------
+
+Asigment Description:
+
+A ball is thrown with a certain velocity and direction 
+from above the robot.
+The launch is repeated, always with the same parameters, 
+but the actual values are unknown to the robot. The task 
+is to catch the flying ball with the robot end effector, 
+by adjusting the position and orientation for 
+intercepting its falling trajectory, according to the 
+outcome of previous launches.
+
+After you move the robot to a certain location, the ball 
+is released, and you receive feedback on:
+
+ 1) the minimum distance (in mm) between end effector and 
+ ball falling trajectory. You only get the distance, not 
+ where the effector is with respect to the ball.
+
+ 2) the angular deviation (in degrees) between the ball 
+ falling direction and the end orientation at the minimum 
+ distance.
+
+The ball is considered caught only if both distance and 
+angular deviation are below their respective thresholds. 
+You need to devise an algorithm that adjusts position and 
+orientation of the robot end effector according to the 
+feedback received at each ball launch.
+
+Once the object is caught, a new object will be thrown with 
+different parameters, so the algorithms need to work within 
+a range of different initial values. You can use any algorithm,
+but only using the feedback values, not the initial parameters 
+or the trajectory points, which are always unknown to the robot.
+
+The reference frame has the origin at the base of the robot 
+arm, with the y axis facing forward from the robot (y>0 in front), 
+the x axis laterally (x>0 on the right), and the z axis vertically
+(z>0 up). The launching speed v0 will vary between 0.5 and 1.5 m/s, 
+the downward angle(w.r.t. to xy plane) between 0° and 45°, the 
+lateral angle (w.r.t. yz plane) between -15° and 15°. Any friction 
+is ignored, and g = 9.81 m/s2 is the only acceleration.
+
+Distance threshold for considering a catch successful is 0.05m. 
+Orientation deviation threshold is 5°. We suggest you solve the 
+problems in two steps, by including only distance threshold to start 
+with. When the system works consistently for different initial values,
+add the constrain on orientation.
